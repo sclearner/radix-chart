@@ -133,8 +133,11 @@ GraphPlanePainter({
   void paint(Canvas canvas, Size size) {
     if (lines == 0) return;
     // Horizontal circle
-    for (double r = maxRelativeRadius; r >= minRelativeRadius; r -= (maxRelativeRadius - minRelativeRadius) / (lines - 1)) {
+    double r = maxRelativeRadius;
+    double step = (maxRelativeRadius - minRelativeRadius) / (lines - 1);
+    for (int i=0; i<lines; i++) {
       drawPolygon(canvas, size, r);
+      r -= step;
     }
   }
 
